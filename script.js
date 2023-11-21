@@ -1,27 +1,12 @@
 function stringChop(str, size) {
   // your code here
-	if(str.length == 0){
-		return [];
+	if(str===null) return [];
+	let i=0,ans=[];
+	while(i<str.length){
+		ans.push(str.slice(i,i+size));
+		i=i+size;
 	}
-	if(str.length <= size){
-		return str
-	}
-	
-	let ans = [];
-	let index= 0;
-	for (let i = 0; i < str.length/size+1; i++) {
-		let n = size;
-		let chip = "";
-		while (n>0) {
-			if (str.charAt(index)!==undefined) {
-				chip+=str.charAt(index);
-				index++;
-			}
-			n--;
-		}
-		ans.push(chip)
-	}
-	return [ans];
+	return ans;
 }
 
 // Do not change the code below
