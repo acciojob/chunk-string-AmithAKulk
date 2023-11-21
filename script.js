@@ -1,19 +1,30 @@
 function stringChop(str, size) {
   // your code here
-	let ans =[];
-	let i=0;
-	while (i<=str.length-1) {
-		ans.push(str.slice(i,i+2));
-		i= i+2;		
+	if(str.length == 0){
+		return [];
 	}
+	if(str.length <= size){
+		return str
+	}
+	
+	let ans = [];
+	let index= 0;
+	for (let i = 0; i < str.length/size+1; i++) {
+		let n = size;
+		let chip = "";
+		while (n>0) {
+			if (str.charAt(index)!==undefined) {
+				chip+=str.charAt(index);
+				index++;
+			}
+			n--;
+		}
+		ans.push(chip)
+	}
+	return [ans];
 }
-
-// Do not change the code below
-// const str = prompt("Enter String.");
-// const size = prompt("Enter Chunk Size.");
-// alert(stringChop(str, size))
 
 // Do not change the code below
 const str = prompt("Enter String.");
 const size = prompt("Enter Chunk Size.");
-alert(stringChop(str, size));
+alert(stringChop(str, size).join(","));
